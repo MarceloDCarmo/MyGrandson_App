@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import {api, AxiosResponse } from '../../api/api'
+import {api, ApiResponse } from '../../api/api'
 import { styles } from './styles'
 
 export function Login() {
@@ -11,7 +11,7 @@ export function Login() {
 
     async function apiLogin(username: string, password: string) {
         try {
-            const { data } = await api.post<AxiosResponse>("/login", {
+            const { data } = await api.post<ApiResponse>("/login", {
                 username,
                 password
             })

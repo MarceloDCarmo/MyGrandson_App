@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-type AxiosResponse = {
-        token: string,
-        expires_in: string
+type ApiResponse = {
+    token: string,
+    expires_in: string
 }
 
 const api = axios.create({
     baseURL: 'https://my-grandson.herokuapp.com/'
 })
 
-export { api, AxiosResponse }
+export { api, ApiResponse}
