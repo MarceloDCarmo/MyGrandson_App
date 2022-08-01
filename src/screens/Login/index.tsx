@@ -22,7 +22,7 @@ export function Login() {
             Alert.alert("Token de acesso", "Seu token:\n" + await AsyncStorage.getItem('accessToken'))
         } catch (error) {
             Alert.alert("Ops! Ocorreu um erro")
-            console.error(error)
+            console.log(error)
         }
     }
 
