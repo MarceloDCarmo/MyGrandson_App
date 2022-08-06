@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { ForgotPassword } from '../screens/ForgotPassword'
 import { Login } from '../screens/Login'
 
 const { Screen, Navigator } = createNativeStackNavigator()
@@ -6,6 +7,11 @@ const { Screen, Navigator } = createNativeStackNavigator()
 export function AppRoutes() {
     return (
         <Navigator>
+            
+            <Screen
+                name='forgotPassword'
+                component={ForgotPassword}
+            />
             <Screen
                 name='login'
                 component={Login}

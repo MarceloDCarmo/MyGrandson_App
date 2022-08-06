@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import {api, ApiResponse } from '../../api/api'
@@ -8,6 +9,8 @@ export function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigation = useNavigation()
 
     async function apiLogin(username: string, password: string) {
         try {
@@ -20,6 +23,8 @@ export function Login() {
             await AsyncStorage.setItem('tokenExpireTime', data.expires_in)
 
             Alert.alert("Token de acesso", "Seu token:\n" + await AsyncStorage.getItem('accessToken'))
+
+            navigation.navigate('forgotPassword')
         } catch (error) {
             Alert.alert("Ops! Ocorreu um erro")
             console.log(error)
