@@ -3,11 +3,15 @@ import { useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import api from '../../api/api'
 import { styles } from './styles'
+import { MaterialIcons } from '@expo/vector-icons'
+
+type MaterialIconName = React.ComponentProps<typeof MaterialIcons>['name']
 
 export function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [passVisibility, setPassVisibility] = useState({ button: 'visibility-off', input: true })
 
     async function apiLogin(username: string, password: string) {
         try {
@@ -26,6 +30,14 @@ export function Login() {
         }
     }
 
+    function changePassVisibility() {
+        if(passVisibility.button == 'visibility-off'){
+            setPassVisibility({ button: 'visibility', input: false})
+        } else {
+            setPassVisibility({ button: 'visibility-off', input: true})
+        }
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.label}>
@@ -33,20 +45,29 @@ export function Login() {
             </Text>
             <TextInput
                 keyboardType='default'
-                maxLength={30}
-                style={styles.textInput}
+                maxLength={50}
+                style={styles.nameInput}
                 onChangeText={value => setUsername(value)}
             />
             <Text style={styles.label}>
                 Senha
             </Text>
-            <TextInput
-                keyboardType='default'
-                secureTextEntry={true}
-                maxLength={50}
-                style={styles.textInput}
-                onChangeText={value => setPassword(value)}
-            />
+            <View style={styles.passwordInputContainer}>
+                <TextInput
+                    keyboardType='default'
+                    secureTextEntry={passVisibility.input}
+                    maxLength={50}
+                    style={styles.passwordInput}
+                    onChangeText={value => setPassword(value)}
+                />
+                <MaterialIcons 
+                    name={passVisibility.button as MaterialIconName}
+                    size={ 30 }
+                    color='#3a44d9'
+                    style={styles.visibilityIcon}
+                    onPress={changePassVisibility}
+                />
+            </View>
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => apiLogin(username, password)}

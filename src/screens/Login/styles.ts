@@ -6,13 +6,31 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 70,
     },
+    passwordInputContainer: {
+        flexDirection: 'row',
+        width: '70%',
+        alignItems: 'center',
+        // justifyContent: 'center',
+    },
+    visibilityIcon: {
+        marginLeft: 15
+    },
     label: {
         fontSize: 24
     },
-    textInput: {
+    nameInput: {
         borderWidth: 1,
         borderColor: '#000',
-        width: '75%',
+        width: '70%',
+        marginVertical: 20,
+        fontSize: 24,
+        padding: 10,
+        borderRadius: 10
+    },
+    passwordInput: {
+        borderWidth: 1,
+        borderColor: '#000',
+        width: '100%',
         marginVertical: 20,
         fontSize: 24,
         padding: 10,
