@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import {api, ApiResponse } from '../../api/api'
+import api from '../../api/api'
 import { styles } from './styles'
 
 export function CreateUser() {
@@ -13,13 +13,13 @@ export function CreateUser() {
     const navigation = useNavigation()
 
     async function createUser(username: string, password: string) {
-        
+
         try {
-            const { data } = api.post<ApiResponse>('/users', {
+            const { data } = await api.post('/users', {
                 username,
                 password
             })
-            
+
             Alert.alert('Alerta!', `Usuário ${username} criado com sucesso!`)
         } catch (error) {
             Alert.alert('Erro!', 'Não seja burro, faz direito!')
