@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Login } from '../screens/Login'
+import theme from '../theme'
 
 const { Screen, Navigator } = createNativeStackNavigator()
 
@@ -10,12 +11,7 @@ export function AppRoutes() {
                 name='login'
                 component={Login}
                 options={{
-                    title: 'Login',
-                    headerTitleAlign: 'center',
-                    headerStyle: {
-                        backgroundColor: '#ee6d08',
-                    },
-                    headerTintColor: '#ebebeb'
+                    headerShown: false,
                 }}
             />
         </Navigator>
