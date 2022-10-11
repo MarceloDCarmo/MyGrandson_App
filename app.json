@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "MyGrandsonApp",
-    "slug": "MyGrandsonApp",
+    "slug": "my-grandson",
+    "owner": "marcelodc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
